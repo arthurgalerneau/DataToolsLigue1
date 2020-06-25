@@ -2,7 +2,7 @@
 """
 Created on Mon Jun 22 16:14:40 2020
 
-@author: thoma
+@author: thomas, armand, arthur
 """
 
 from bs4 import BeautifulSoup
@@ -23,7 +23,7 @@ saisons=[]
 
 for x in range(4,9) :
 
-    driver=webdriver.Chrome()
+    driver=webdriver.Chrome(r"C:\Users\Actif\Documents\chromedriver")
     y=x+1
     driver.implicitly_wait(1)
     url= 'https://www.flashscore.fr/football/france/ligue-1-201'+str(x)+'-201'+str(y)+'/resultats/'
@@ -104,5 +104,5 @@ matchs=pd.DataFrame({
 
 
 
-matchs.to_csv(r'C:\Users\arman\desktop\test_armand\resultats_matchs.csv',sep=";",index=None)
+matchs.to_csv(r'resultats_matchs.csv',sep=";",index=None)
 
