@@ -26,6 +26,7 @@ L1 = Label(screen, text="Nom de l'equipe")
 L1.pack(side = TOP)
 E1 = Entry(screen, bd =5)
 E1.pack(side = TOP)
+matplotlib.use('TkAgg')
 
 
 def evolution_saison(df):
@@ -50,6 +51,7 @@ def evolution_saison(df):
     plt.xlabel("Saison")
     plt.ylabel("Score")
     f.canvas.draw()
+    matplotlib.use('TkAgg')
     
     
     
@@ -68,7 +70,7 @@ def evolution_nombre_but(df):
         if (equipe_ext == equipe_choix) :
             analyse.loc[saison,'but_enc']  += score_dom
             analyse.loc[saison,'but_mark'] += score_ext
-    f = plt.figure()
+    f = plt.figure(figsize=(20,10))
     plt.title("Evolution des buts de "+equipe_choix)
     plt.plot(analyse.index, analyse['but_enc'], label="évolution des buts encaissés")
     plt.plot(analyse.index, analyse['but_mark'], label="évolution des buts marqués")
@@ -76,6 +78,7 @@ def evolution_nombre_but(df):
     plt.xlabel("Saison")
     plt.ylabel("Nombre de buts encaissés/marqués")
     f.canvas.draw()
+
     
 def evolution_match_VD(df):
     equipe_choix = E1.get()
@@ -98,8 +101,8 @@ def evolution_match_VD(df):
         if (resultat == "N") :
             analyse.loc[saison,'egalite']  += 1
             
-    f = plt.figure()
-    plt.title("Evoltion des matchs de "+equipe_choix)
+    f = plt.figure(figsize=(20,10))
+    plt.title("Evolution des matchs de "+equipe_choix)
     plt.plot(analyse.index, analyse['victoire'], label="évolution des victoires")
     plt.plot(analyse.index, analyse['defaite'], label="évolution des defaites")
     plt.plot(analyse.index, analyse['egalite'], label="évolution des égalités")
